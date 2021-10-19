@@ -1,11 +1,19 @@
-import React from 'react';
-import './App.css';
+// Libraries
+import React from "react";
+import { Container } from "./styles";
+
+// Component imports
+import Navbar from "./components/layout/Navbar";
+import ReposList from "./components/containers/ReposList";
 
 function App() {
   return (
-    <p>
-      Cleanedup React App
-    </p>
+    <>
+      <Navbar />
+      <Container>
+        <ReposList />
+      </Container>
+    </>
   );
 }
 
