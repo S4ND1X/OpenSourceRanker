@@ -1,11 +1,17 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { Container } from "./styles";
+import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
-    <p>
-      Cleanedup React App
-    </p>
+    <>
+      <Navbar />
+      <Container>
+        <div>
+          <p>Cleanedup React App</p>
+        </div>
+      </Container>
+    </>
   );
 }
 
