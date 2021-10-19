@@ -5,13 +5,18 @@ const Navbar = () => {
   return (
     <Background>
       <h2>Open Source Ranker</h2>
+      <p>Search</p>
     </Background>
   );
 };
 
 const Background = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   margin-bottom: 1rem;
-  padding: 0.5rem;
+  padding: 1rem;
 
   h2 {
     margin: 0;
