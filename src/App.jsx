@@ -2,9 +2,9 @@
 import React from "react";
 import { Container } from "./styles";
 
-// Component imports
+// Component importswww
 import Navbar from "./components/layout/Navbar";
-import ReposList from "./components/containers/ReposList";
+import ReposList from "./components/ReposList";
 
 function App() {
   return (
