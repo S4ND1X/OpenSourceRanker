@@ -1,49 +1,13 @@
-import { Octokit } from "@octokit/core";
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const octokit = new Octokit({ auth: process.env.REACT_APP_GITHUB_API_KEY });
-
 const RepoCard = ({ repo }) => {
-  const [repoInfo, setRepoInfo] = useState({
-    info: {
-      name: repo.split("/").slice(1)[1],
-      author: repo.split("/").slice(1)[0],
-    },
-    data: {},
-  });
-
-  // console.log(repoInfo);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await octokit
-        .request(`GET /repos/{owner}/{repo}`, {
-          owner: repoInfo.info.author,
-          repo: repoInfo.info.name,
-        })
-        .then((res) =>
-          setRepoInfo((prevState) => ({
-            info: prevState.info,
-            data: res.data,
-          }))
-        );
-
-      await octokit.request("GET /rate_limit").then((res) => console.log(res));
-    };
-
-    fetchData();
-  }, [repoInfo.info.author, repoInfo.info.name]);
-
   return (
     <Background>
-      <a
-        href={`https://github.com/${repoInfo.info.author}/${repoInfo.info.name}`}
-      >
+      <a href={`https://github.com/${repo.info.author}/${repo.info.name}`}>
         <div className="info">
-          <h2>{repoInfo.info.name}</h2>
-          {repoInfo.data && <p>"{repoInfo.data.description}"</p>}
-          <h3>by {repoInfo.info.author}</h3>
+          <h2>{repo.info.name}</h2>
+          {repo.data && <p>"{repo.data.description}"</p>}
+          <h3>by {repo.info.author}</h3>
         </div>
       </a>
     </Background>
