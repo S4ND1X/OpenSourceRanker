@@ -9,8 +9,8 @@ const ReposList = () => {
       <h2>Top 10 most popular repos</h2>
 
       <div className="list">
-        {repos.map((repo) => (
-          <RepoCard repo={repo} />
+        {repos.map((repo, index) => (
+          <RepoCard repo={repo} key={index} />
         ))}
       </div>
     </Background>
