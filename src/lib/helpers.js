@@ -37,15 +37,15 @@ export const rankRepo = (repo) => {
   score += repo.data.stargazers_count > 10 ? 20 : 0;
   score += repo.data.forks_count > 10 ? 20 : 0;
 
-  if (score <= 59) {
+  if (score <= 49) {
     return { rank: "F", color: "#CC5956" };
-  } else if (score >= 60 && score <= 69) {
+  } else if (score >= 50 && score <= 59) {
     return { rank: "D", color: "#D4A57B" };
-  } else if (score >= 70 && score <= 79) {
+  } else if (score >= 60 && score <= 69) {
     return { rank: "C", color: "#BDB078" };
-  } else if (score >= 80 && score <= 89) {
+  } else if (score >= 70 && score <= 79) {
     return { rank: "B", color: "#ADD47B" };
-  } else if (score >= 90 && score <= 100) {
+  } else if (score >= 80 && score <= 100) {
     return { rank: "A", color: "#6BC791" };
   }
 };
