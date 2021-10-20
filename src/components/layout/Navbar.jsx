@@ -13,7 +13,7 @@ const Navbar = () => {
 
 const Background = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   margin-bottom: 1rem;
@@ -22,6 +22,27 @@ const Background = styled.div`
   h2 {
     margin: 0;
     font-size: 1.2rem;
+  }
+
+  /* Medium screen devices (768px and above) */
+  @media only screen and (min-width: 768px) {
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  /* Extra big screen devices (1200px and above) */
+  @media only screen and (min-width: 1200px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
   }
 `;
 

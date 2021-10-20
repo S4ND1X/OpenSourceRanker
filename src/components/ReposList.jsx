@@ -67,7 +67,7 @@ const ReposList = () => {
             repo.info.name.toLowerCase().includes(cleanSearch) ||
             repo.info.author.toLowerCase().includes(cleanSearch)
           )
-            return repo; 
+            return repo;
         });
 
         return filteredRes;
@@ -97,12 +97,51 @@ const Background = styled.div`
 
   .list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-gap: 0.8rem;
   }
 
   h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Small screen devices (600px and above) */
+  @media only screen and (min-width: 600px) {
+    .list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1.2rem;
+    }
+
+    h2 {
+      margin-bottom: 0.6rem;
+    }
+  }
+
+  /* Medium screen devices (768px and above) */
+  @media only screen and (min-width: 768px) {
+    .list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1.5rem;
+    }
+
+    h2 {
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  /* Extra big screen devices (1200px and above) */
+  @media only screen and (min-width: 1200px) {
+    .list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
   }
 `;
 
