@@ -1,8 +1,8 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-
 import { rankRepo } from "../lib/helpers";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 // Solid heart
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 // Outline heart
@@ -10,6 +10,44 @@ import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
 const RepoCard = ({ repo }) => {
   const { rank, color } = rankRepo(repo);
+  const [isLiked, setIsLiked] = useState();
+
+  useEffect(() => {
+    if (
+      JSON.parse(localStorage.getItem("osranker-likes")).includes(
+        repo.info.name
+      )
+    ) {
+      setIsLiked(true);
+    } else {
+      setIsLiked(false);
+    }
+  }, [repo.info.name]);
+
+  const handleLike = () => {
+    const includesCurrRepo = JSON.parse(
+      localStorage.getItem("osranker-likes")
+    ).includes(repo.info.name);
+
+    if (includesCurrRepo) {
+      const currLikes = JSON.parse(localStorage.getItem("osranker-likes"));
+
+      // removing the item  from the arr and setting the new value
+      localStorage.setItem(
+        "osranker-likes",
+        JSON.stringify(currLikes.filter((el) => el !== repo.info.name))
+      );
+      setIsLiked(false);
+    } else {
+      const currLikes = JSON.parse(localStorage.getItem("osranker-likes"));
+      currLikes.push(repo.info.name);
+
+      // removing the item  from the arr and setting the new value
+      localStorage.setItem("osranker-likes", JSON.stringify(currLikes));
+      setIsLiked(true);
+    }
+  };
+
   return (
     <Background>
       <a href={`https://github.com/${repo.info.author}/${repo.info.name}`}>
@@ -20,11 +58,23 @@ const RepoCard = ({ repo }) => {
           <h3>by {repo.info.author}</h3>
         </div>
       </a>
-      {/* Simulate like */}
-      {Math.random() > 0.5 ? (
-        <FontAwesomeIcon icon={farHeart} className="like" />
+
+      {isLiked ? (
+        <FontAwesomeIcon
+          icon={faHeart}
+          className="like"
+          onClick={() => {
+            handleLike();
+          }}
+        />
       ) : (
-        <FontAwesomeIcon icon={faHeart} className="like" />
+        <FontAwesomeIcon
+          icon={farHeart}
+          className="like"
+          onClick={() => {
+            handleLike();
+          }}
+        />
       )}
     </Background>
   );
@@ -48,6 +98,7 @@ const Background = styled.div`
   .like {
     align-self: flex-end;
     color: #cc5956;
+    cursor: pointer;
   }
 
   a {
