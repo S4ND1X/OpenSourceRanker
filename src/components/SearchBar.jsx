@@ -16,8 +16,7 @@ const SearchBar = ({ search, handleChange }) => {
 
 const Background = styled.div`
   input[type="text"] {
-    margin-bottom: 1rem;
-
+    margin-bottom: 0.3rem;
     width: 50%;
     border: 2px solid #344455;
     border-radius: 5px;
