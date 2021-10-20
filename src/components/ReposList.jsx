@@ -1,12 +1,19 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { repos } from "../lib/helpers";
 import RepoCard from "./RepoCard";
+import SearchBar from "./SearchBar";
 
 const ReposList = () => {
+  const [search, setSearch] = useState("");
+
+  const handleSearchChange = (e) => setSearch(e.target.value);
+
   return (
     <Background>
-      <h2>Top 10 most popular repos</h2>
+      <div className="search-container">
+        <SearchBar search={search} handleChange={handleSearchChange} />
+      </div>
 
       <div className="list">
         {repos.map((repo, index) => (
@@ -18,6 +25,10 @@ const ReposList = () => {
 };
 
 const Background = styled.div`
+  .search-container {
+    text-align: center;
+  }
+
   .list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

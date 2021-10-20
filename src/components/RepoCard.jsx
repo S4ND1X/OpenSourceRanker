@@ -68,7 +68,7 @@ const Background = styled.div`
 
   h2 {
     font-size: 1rem;
-    margin: 0;
+    margin: 0 !important;
   }
 
   h3 {

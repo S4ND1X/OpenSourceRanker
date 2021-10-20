@@ -1,13 +1,6 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 
-const SearchBar = () => {
-  const [search, setSearch] = useState("");
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
-
+const SearchBar = ({ search, handleChange }) => {
   return (
     <Background>
       <input
@@ -23,8 +16,10 @@ const SearchBar = () => {
 
 const Background = styled.div`
   input[type="text"] {
+    margin-bottom: 1rem;
+
     width: 50%;
-    border: 2px solid #212427;
+    border: 2px solid #344455;
     border-radius: 5px;
     font-size: 20px;
     background-image: url(/img/search.png);
