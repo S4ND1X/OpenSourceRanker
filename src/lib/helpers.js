@@ -9,37 +9,37 @@ export const repos = [
   "/MLH-Fellowship/spotify-web-app",
   "/S4ND1X/AlgorithmicClubGDAFullstack",
   "/S4ND1X/RickAndMortyJS",
-  "/MLH-Fellowship/pyre-check",
-  "/suryapratapsinghsuryavanshi/solverjs",
-  "/utkarsh1504/DSA-Java/",
-  "/vinitshahdeo/Quotter/",
-  "/vinitshahdeo/SimpleBio",
-  "/vinitshahdeo/HBD/",
-  "/vinitshahdeo/Hashtagify",
-  "/vinitshahdeo/online-debate-system",
-  "/vinitshahdeo/MiniYouTube",
-  "/vinitshahdeo/TwitterSentimentAnalysis",
-  "/vinitshahdeo/ProgressiveNewsApp",
-  "/vinitshahdeo/Map-of-India/",
-  "/vinitshahdeo/myFaculty/",
-  "/vinitshahdeo/water-monitoring-system/",
-  "/vinitshahdeo/Recruitment-Portal/",
-  "/vinitshahdeo/covid19api/",
-  "/thisisamank/resizrr/",
-  "/bacloud14/Classified-ads-48/",
-  "/rishipurwar1/coding-space",
-  "/dry-python/classes",
-  "/felixfaisal/attack-on-web",
-  "/felixfaisal/formica",
-  "/prafulla-codes/express-autodocs",
-  "/prafulla-codes/express-autodocs",
-  "/vinitshahdeo/inspirational-quotes",
-  "/vinitshahdeo/jobtweets/",
-  "/vinitshahdeo/Email-Signature-Template",
-  "/vinitshahdeo/Hackathon-Timer",
-  "/vinitshahdeo/Cookie-Manager/",
-  "/suryapratapsinghsuryavanshi/NASA-Media-Search",
-  "/Rishabh-malhotraa/caucus/",
+  // "/MLH-Fellowship/pyre-check",
+  // "/suryapratapsinghsuryavanshi/solverjs",
+  // "/utkarsh1504/DSA-Java/",
+  // "/vinitshahdeo/Quotter/",
+  // "/vinitshahdeo/SimpleBio",
+  // "/vinitshahdeo/HBD/",
+  // "/vinitshahdeo/Hashtagify",
+  // "/vinitshahdeo/online-debate-system",
+  // "/vinitshahdeo/MiniYouTube",
+  // "/vinitshahdeo/TwitterSentimentAnalysis",
+  // "/vinitshahdeo/ProgressiveNewsApp",
+  // "/vinitshahdeo/Map-of-India/",
+  // "/vinitshahdeo/myFaculty/",
+  // "/vinitshahdeo/water-monitoring-system/",
+  // "/vinitshahdeo/Recruitment-Portal/",
+  // "/vinitshahdeo/covid19api/",
+  // "/thisisamank/resizrr/",
+  // "/bacloud14/Classified-ads-48/",
+  // "/rishipurwar1/coding-space",
+  // "/dry-python/classes",
+  // "/felixfaisal/attack-on-web",
+  // "/felixfaisal/formica",
+  // "/prafulla-codes/express-autodocs",
+  // "/prafulla-codes/express-autodocs",
+  // "/vinitshahdeo/inspirational-quotes",
+  // "/vinitshahdeo/jobtweets/",
+  // "/vinitshahdeo/Email-Signature-Template",
+  // "/vinitshahdeo/Hackathon-Timer",
+  // "/vinitshahdeo/Cookie-Manager/",
+  // "/suryapratapsinghsuryavanshi/NASA-Media-Search",
+  // "/Rishabh-malhotraa/caucus/",
 ];
 
 /* function to rank open source friendly repos
@@ -56,7 +56,6 @@ export const repos = [
  * - Forks > 10 +20
  * Total score is capped at 100
  */
-
 export const rankRepo = (repo) => {
   let score = 0;
   score += repo.data.license ? 5 : 0;
@@ -79,4 +78,21 @@ export const rankRepo = (repo) => {
   } else if (score >= 80 && score <= 100) {
     return { rank: "A", color: "#6BC791" };
   }
+};
+
+export const sort = (arr, type = "asc") => {
+  const sortedArr = arr.sort((a, b) => {
+    const rankedRepoA = rankRepo(a).rank.toLowerCase().charCodeAt(0);
+    const rankedRepoB = rankRepo(b).rank.toLowerCase().charCodeAt(0);
+
+    if (type === "asc") {
+      if (rankedRepoA > rankedRepoB) return 1;
+      else return -1;
+    } else {
+      if (rankedRepoA < rankedRepoB) return 1;
+      else return -1;
+    }
+  });
+
+  return sortedArr;
 };
