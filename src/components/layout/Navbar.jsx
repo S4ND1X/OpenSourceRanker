@@ -7,7 +7,6 @@ const Navbar = () => {
     <Background>
       <h2>Open Source Ranker</h2>
       <SearchBar />
-      <p>Search</p>
     </Background>
   );
 };
