@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import SearchBar from "../SearchBar";
 
 const Navbar = () => {
   return (
     <Background>
       <h2>Open Source Ranker</h2>
+      <SearchBar />
       <p>Search</p>
     </Background>
   );
