@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
+import { rankRepo } from "../lib/helpers";
+
 const RepoCard = ({ repo }) => {
+  const { rank, color } = rankRepo(repo);
   return (
     <Background>
       <a href={`https://github.com/${repo.info.author}/${repo.info.name}`}>
         <div className="info">
-          <h2>{repo.info.name}</h2>
+          <h1>{repo.info.name}</h1>
+          <h2 style={{ color: color }}>{rank}</h2>
           {repo.data && <p>"{repo.data.description}"</p>}
           <h3>by {repo.info.author}</h3>
         </div>
@@ -30,9 +34,14 @@ const Background = styled.div`
     text-align: center;
   }
 
-  h2 {
+  h1 {
     font-size: 1rem;
     margin: 0 !important;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: 0.3rem 0;
   }
 
   h3 {

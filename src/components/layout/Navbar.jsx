@@ -4,7 +4,9 @@ import styled from "styled-components";
 const Navbar = () => {
   return (
     <Background>
-      <h2>Open Source Ranker</h2>
+      <a href="./">
+        <h2>Open Source Ranker</h2>
+      </a>
     </Background>
   );
 };

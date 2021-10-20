@@ -59,20 +59,21 @@ const ReposList = () => {
   useEffect(() => {
     if (filteredData.length > 0) {
       setFilteredData(() => {
+        // eslint-disable-next-line
         const filteredRes = reposData.filter((repo) => {
-          const cleanSearch = search.toLowerCase();
+          const cleanSearch = search.toLowerCase().trim();
 
           if (
             repo.info.name.toLowerCase().includes(cleanSearch) ||
             repo.info.author.toLowerCase().includes(cleanSearch)
           )
-            return repo;
+            return repo; 
         });
 
         return filteredRes;
       });
     }
-  }, [search]);
+  }, [search, reposData, filteredData.length]);
 
   return (
     <Background>
