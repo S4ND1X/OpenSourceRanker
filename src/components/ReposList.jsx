@@ -9,6 +9,7 @@ const octokit = new Octokit({ auth: process.env.REACT_APP_GITHUB_API_KEY });
 
 const ReposList = () => {
   const [search, setSearch] = useState("");
+  const [localSearch, setLocalSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [reposData, setReposData] = useState([]);
   const [selectedSort, setSelectedSort] = useState("");
@@ -72,7 +73,7 @@ const ReposList = () => {
       setFilteredData(() => {
         // eslint-disable-next-line
         const filteredRes = reposData.filter((repo) => {
-          const cleanSearch = search.toLowerCase().trim();
+          const cleanSearch = localSearch.toLowerCase().trim();
 
           if (
             repo.info.name.toLowerCase().includes(cleanSearch) ||
@@ -84,7 +85,7 @@ const ReposList = () => {
         return filteredRes;
       });
     }
-  }, [search, reposData, filteredData.length]);
+  }, [localSearch, reposData, filteredData.length]);
 
   // Sort
   useEffect(() => {
@@ -118,6 +119,14 @@ const ReposList = () => {
         </select>
       </div>
 
+      <input
+        type="text"
+        className="local-search"
+        value={localSearch}
+        placeholder="Filter through the list..."
+        onChange={(e) => setLocalSearch(e.target.value)}
+      />
+
       <div className="list">
         {filteredData.map((repo, index) => (
           <RepoCard repo={repo} key={index} />
@@ -145,6 +154,15 @@ const Background = styled.div`
 
   h2 {
     margin-bottom: 0.5rem;
+  }
+
+  .local-search {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+
+    border: none;
+    border-bottom: 2px solid black;
   }
 
   /* Small screen devices (600px and above) */

@@ -1,6 +1,9 @@
+import { useHistory } from "react-router";
 import styled from "styled-components";
 
 const SearchBar = ({ search, handleChange }) => {
+  const history = useHistory();
+
   return (
     <Background>
       <input
@@ -10,14 +13,24 @@ const SearchBar = ({ search, handleChange }) => {
         value={search}
         onChange={handleChange}
       />
+      <button
+        onClick={() => history.push(`/repo/${encodeURIComponent(search)}`)}
+      >
+        Search
+      </button>
     </Background>
   );
 };
 
 const Background = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto 1rem auto;
+
   input[type="text"] {
     margin-bottom: 0.3rem;
-    width: 50%;
+    width: 100%;
     border: 2px solid #344455;
     border-radius: 5px;
     font-size: 20px;
@@ -31,6 +44,23 @@ const Background = styled.div`
 
   input[type="text"]:focus {
     width: 100%;
+  }
+
+  button {
+    background-color: #5e84ff;
+    padding: 0.5rem;
+
+    cursor: pointer;
+
+    border: none;
+    border-radius: 5px;
+
+    color: white;
+    font-size: 1rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 80%;
   }
 `;
 
