@@ -189,6 +189,10 @@ const Background = styled.div`
     .search-container {
       padding: 3rem;
     }
+
+    .filters {
+      justify-content: center;
+    }
   }
 
   /* Small screen devices (600px and above) */
