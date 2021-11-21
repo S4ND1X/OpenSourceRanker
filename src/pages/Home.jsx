@@ -5,7 +5,6 @@ import ReposList from "../components/ReposList";
 const Home = () => {
   return (
     <>
-      <Navbar />
       <Container>
         <ReposList />
       </Container>
