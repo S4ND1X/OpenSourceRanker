@@ -1,14 +1,14 @@
 import { Container } from "../styles";
-import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import ReposList from "../components/ReposList";
 
 const Home = () => {
   return (
     <>
-      <Navbar />
       <Container>
         <ReposList />
       </Container>
+      <Footer />
     </>
   );
 };

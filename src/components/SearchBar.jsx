@@ -48,7 +48,7 @@ const Background = styled.div`
 
   button {
     background-color: #5e84ff;
-    padding: 0.5rem;
+    padding: 1rem;
 
     cursor: pointer;
 

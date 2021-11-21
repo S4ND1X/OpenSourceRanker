@@ -97,35 +97,42 @@ const ReposList = () => {
   return (
     <Background>
       <div className="search-container">
+        <h1>Open Source Ranker</h1>
         <SearchBar search={search} handleChange={handleSearchChange} />
-        <label for="sort">Sort repos:</label>
-        <select
-          name="sort"
-          id="sort"
-          value={selectedSort}
-          onChange={(e) => setSelectedSort(e.target.value)}
-        >
-          <option value="" selected disabled hidden>
-            Choose here
-          </option>
-          {sortVals.map((sortItem) => (
-            <option
-              value={sortItem.value}
-              // selected={sortItem.value === selectedSort && "selected"}
-            >
-              {sortItem.label}
-            </option>
-          ))}
-        </select>
       </div>
 
-      <input
-        type="text"
-        className="local-search"
-        value={localSearch}
-        placeholder="Filter through the list..."
-        onChange={(e) => setLocalSearch(e.target.value)}
-      />
+      <h1 style={{ textAlign: "center" }}>Top repos to check out</h1>
+
+      <div className="filters">
+        <input
+          type="text"
+          className="local-search"
+          value={localSearch}
+          placeholder="Filter through the list..."
+          onChange={(e) => setLocalSearch(e.target.value)}
+        />
+        <div>
+          <label for="sort">Sort repos: </label>
+          <select
+            name="sort"
+            id="sort"
+            value={selectedSort}
+            onChange={(e) => setSelectedSort(e.target.value)}
+          >
+            <option value="" selected disabled hidden>
+              Choose here
+            </option>
+            {sortVals.map((sortItem) => (
+              <option
+                value={sortItem.value}
+                // selected={sortItem.value === selectedSort && "selected"}
+              >
+                {sortItem.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
       <div className="list">
         {filteredData.map((repo, index) => (
@@ -139,10 +146,17 @@ const ReposList = () => {
 const Background = styled.div`
   .search-container {
     text-align: center;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0 2.5rem 0;
+    padding: 6rem;
+    background-color: #ebf0ff;
+    border-radius: 10px;
 
     label {
       margin-right: 0.5rem;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
     }
   }
 
@@ -150,19 +164,35 @@ const Background = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0.8rem;
+    padding-bottom: 1.5rem;
   }
 
   h2 {
     margin-bottom: 0.5rem;
   }
 
+  .filters {
+    display: flex;
+    align-items: center;
+  }
+
   .local-search {
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin: 0 1rem 1rem 0;
     padding: 0.5rem;
 
     border: none;
     border-bottom: 2px solid black;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .search-container {
+      padding: 3rem;
+    }
+
+    .filters {
+      justify-content: center;
+    }
   }
 
   /* Small screen devices (600px and above) */
