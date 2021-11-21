@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { rankRepo } from "../lib/helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -50,14 +51,18 @@ const RepoCard = ({ repo }) => {
 
   return (
     <Background>
-      <a href={`https://github.com/${repo.info.author}/${repo.info.name}`}>
+      <Link
+        to={`/repo/${encodeURIComponent(
+          `https://github.com/${repo.info.author}/${repo.info.name}`
+        )}`}
+      >
         <div className="info">
           <h1>{repo.info.name}</h1>
           <h2 style={{ color: color }}>{rank}</h2>
           {repo.data && <p>"{repo.data.description}"</p>}
           <h3>by {repo.info.author}</h3>
         </div>
-      </a>
+      </Link>
 
       {isLiked ? (
         <FontAwesomeIcon
