@@ -101,7 +101,7 @@ const ReposList = () => {
         <SearchBar search={search} handleChange={handleSearchChange} />
       </div>
 
-      <h1 style={{ textAlign: "center" }}>Repos of the week</h1>
+      <h1 style={{ textAlign: "center" }}>Top repos to check out</h1>
 
       <div className="filters">
         <input
