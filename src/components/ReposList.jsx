@@ -101,6 +101,8 @@ const ReposList = () => {
         <SearchBar search={search} handleChange={handleSearchChange} />
       </div>
 
+      <h1 style={{ textAlign: "center" }}>Repos of the week</h1>
+
       <div className="filters">
         <input
           type="text"
@@ -144,8 +146,8 @@ const ReposList = () => {
 const Background = styled.div`
   .search-container {
     text-align: center;
-    margin: 1rem 0 1rem 0;
-    padding: 5rem;
+    margin: 1.5rem 0 2.5rem 0;
+    padding: 6rem;
     background-color: #ebf0ff;
     border-radius: 10px;
 
@@ -162,6 +164,7 @@ const Background = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0.8rem;
+    padding-bottom: 1.5rem;
   }
 
   h2 {
@@ -180,6 +183,12 @@ const Background = styled.div`
 
     border: none;
     border-bottom: 2px solid black;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .search-container {
+      padding: 3rem;
+    }
   }
 
   /* Small screen devices (600px and above) */
