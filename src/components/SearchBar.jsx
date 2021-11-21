@@ -58,6 +58,10 @@ const Background = styled.div`
     color: white;
     font-size: 1rem;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
 `;
 
 export default SearchBar;
