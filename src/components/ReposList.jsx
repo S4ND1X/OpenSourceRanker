@@ -84,7 +84,7 @@ const ReposList = () => {
         return filteredRes;
       });
     }
-  }, [search, reposData, filteredData.length]);
+  }, [reposData, filteredData.length]);
 
   // Sort
   useEffect(() => {
