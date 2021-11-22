@@ -1,11 +1,36 @@
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
+// React toast
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// Valid github url
+import isGithubUrl from "is-github-url";
+
 const SearchBar = ({ search, handleChange }) => {
   const history = useHistory();
 
+  // Is a valid Github repository url
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isGithubUrl(search, { repository: true })) {
+      history.push(`/repo/${encodeURIComponent(search)}`);
+    } else {
+      toast.warn("👻 Make sure that the url is a valid Github repository!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   return (
     <Background>
+      <ToastContainer />
       <input
         type="text"
         name="search"
@@ -13,11 +38,7 @@ const SearchBar = ({ search, handleChange }) => {
         value={search}
         onChange={handleChange}
       />
-      <button
-        onClick={() => history.push(`/repo/${encodeURIComponent(search)}`)}
-      >
-        Search
-      </button>
+      <button onClick={handleSubmit}>Search</button>
     </Background>
   );
 };
