@@ -42,7 +42,6 @@ const RepoScore = () => {
         open_issues_count: data.open_issues_count,
         stargazers_count: data.stargazers_count,
         forks_count: data.forks_count,
-        license: data.license,
       });
     };
 
