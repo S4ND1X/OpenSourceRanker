@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { Octokit } from "@octokit/core";
 import styled from "styled-components";
 import { repos, sort } from "../lib/helpers";
+import { octokit } from "../lib/octokit";
 import RepoCard from "./RepoCard";
 import SearchBar from "./SearchBar";
-
-const octokit = new Octokit({ auth: process.env.REACT_APP_GITHUB_API_KEY });
 
 const ReposList = () => {
   const [search, setSearch] = useState("");
