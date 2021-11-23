@@ -75,61 +75,63 @@ const RepoScore = () => {
               </h2>
             </div>
 
-            <div className="graphs">
-              <Bar
-                data={{
-                  labels: ["Repository Stats"],
-                  datasets: [
-                    {
-                      label: "Open Issues",
-                      data: [repo.open_issues_count],
-                      backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-                      borderColor: ["rgba(255, 99, 132, 1)"],
-                      borderWidth: 1,
-                    },
-                    {
-                      label: "Stars",
-                      data: [repo.stargazers_count],
-                      backgroundColor: ["rgba(54, 162, 235, 0.2)"],
-                      borderColor: ["rgba(54, 162, 235, 1)"],
-                      borderWidth: 1,
-                    },
-                    {
-                      label: "Forks",
-                      data: [repo.forks_count],
-                      backgroundColor: ["rgba(75, 192, 192, 0.2)"],
-                      borderColor: ["rgba(75, 192, 192, 1)"],
-                      borderWidth: 1,
-                    },
-                  ],
-                }}
-              />
-            </div>
+            <div className="stats">
+              <div className="graphs">
+                <Bar
+                  data={{
+                    labels: ["Repository Stats"],
+                    datasets: [
+                      {
+                        label: "Open Issues",
+                        data: [repo.open_issues_count],
+                        backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+                        borderColor: ["rgba(255, 99, 132, 1)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "Stars",
+                        data: [repo.stargazers_count],
+                        backgroundColor: ["rgba(54, 162, 235, 0.2)"],
+                        borderColor: ["rgba(54, 162, 235, 1)"],
+                        borderWidth: 1,
+                      },
+                      {
+                        label: "Forks",
+                        data: [repo.forks_count],
+                        backgroundColor: ["rgba(75, 192, 192, 0.2)"],
+                        borderColor: ["rgba(75, 192, 192, 1)"],
+                        borderWidth: 1,
+                      },
+                    ],
+                  }}
+                />
+              </div>
 
-            <div className="repoInfo">
-              <p>
-                <strong>License:</strong>{" "}
-                {repo.license ? repo.license.name : "N/A"}
-              </p>
-              <p>
-                <strong>Has issues:</strong> {repo.has_issues ? "Yes" : "No"}
-              </p>
-              <p>
-                <strong>Allow forking:</strong>{" "}
-                {repo.allow_forking ? "Yes" : "No"}
-              </p>
-              <p>
-                <strong>Has wiki:</strong> {repo.has_wiki ? "Yes" : "No"}
-              </p>
-              <p>
-                <strong>Open issues:</strong> {repo.open_issues_count}
-              </p>
-              <p>
-                <strong>Stars:</strong> {repo.stargazers_count}
-              </p>
-              <p>
-                <strong>Forks:</strong> {repo.forks_count}
-              </p>
+              <div className="repoInfo">
+                <p>
+                  <strong>License:</strong>{" "}
+                  {repo.license ? repo.license.name : "N/A"}
+                </p>
+                <p>
+                  <strong>Has issues:</strong> {repo.has_issues ? "Yes" : "No"}
+                </p>
+                <p>
+                  <strong>Allow forking:</strong>{" "}
+                  {repo.allow_forking ? "Yes" : "No"}
+                </p>
+                <p>
+                  <strong>Has wiki:</strong> {repo.has_wiki ? "Yes" : "No"}
+                </p>
+                <p>
+                  <strong>Open issues:</strong> {repo.open_issues_count}
+                </p>
+                <p>
+                  <strong>Stars:</strong> {repo.stargazers_count}
+                </p>
+                <p>
+                  <strong>Forks:</strong> {repo.forks_count}
+                </p>
+              </div>
             </div>
           </div>
         </Background>
@@ -212,10 +214,22 @@ const Background = styled.div`
   }
 
   /**
+    Layout for stats
+   */
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  /**
   Layout for graphs
  */
   .graphs {
-    width: 100%;
+    padding: 1rem;
+    width: 50%;
   }
 
   /** 
@@ -225,9 +239,8 @@ const Background = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 20px;
     padding: 1rem;
-    width: 100%; /* Make it full width */
+    width: 50%;
   }
 `;
 
