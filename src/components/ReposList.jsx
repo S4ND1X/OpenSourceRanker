@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Octokit } from "@octokit/core";
 import styled from "styled-components";
 import { repos, sort } from "../lib/helpers";
+import { octokit } from "../lib/octokit";
 import RepoCard from "./RepoCard";
 import SearchBar from "./SearchBar";
 
-const octokit = new Octokit({ auth: process.env.REACT_APP_GITHUB_API_KEY });
-
 const ReposList = () => {
   const [search, setSearch] = useState("");
+  const [localSearch, setLocalSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [reposData, setReposData] = useState([]);
   const [selectedSort, setSelectedSort] = useState("");
@@ -72,7 +71,7 @@ const ReposList = () => {
       setFilteredData(() => {
         // eslint-disable-next-line
         const filteredRes = reposData.filter((repo) => {
-          const cleanSearch = search.toLowerCase().trim();
+          const cleanSearch = localSearch.toLowerCase().trim();
 
           if (
             repo.info.name.toLowerCase().includes(cleanSearch) ||
@@ -84,7 +83,7 @@ const ReposList = () => {
         return filteredRes;
       });
     }
-  }, [search, reposData, filteredData.length]);
+  }, [localSearch, reposData, filteredData.length]);
 
   // Sort
   useEffect(() => {
@@ -96,26 +95,41 @@ const ReposList = () => {
   return (
     <Background>
       <div className="search-container">
+        <h1>Open Source Ranker</h1>
         <SearchBar search={search} handleChange={handleSearchChange} />
-        <label for="sort">Sort repos:</label>
-        <select
-          name="sort"
-          id="sort"
-          value={selectedSort}
-          onChange={(e) => setSelectedSort(e.target.value)}
-        >
-          <option value="" selected disabled hidden>
-            Choose here
-          </option>
-          {sortVals.map((sortItem) => (
-            <option
-              value={sortItem.value}
-              // selected={sortItem.value === selectedSort && "selected"}
-            >
-              {sortItem.label}
+      </div>
+
+      <h1 style={{ textAlign: "center" }}>Top repos to check out</h1>
+
+      <div className="filters">
+        <input
+          type="text"
+          className="local-search"
+          value={localSearch}
+          placeholder="Filter through the list..."
+          onChange={(e) => setLocalSearch(e.target.value)}
+        />
+        <div>
+          <label for="sort">Sort repos: </label>
+          <select
+            name="sort"
+            id="sort"
+            value={selectedSort}
+            onChange={(e) => setSelectedSort(e.target.value)}
+          >
+            <option value="" selected disabled hidden>
+              Choose here
             </option>
-          ))}
-        </select>
+            {sortVals.map((sortItem) => (
+              <option
+                value={sortItem.value}
+                // selected={sortItem.value === selectedSort && "selected"}
+              >
+                {sortItem.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="list">
@@ -130,10 +144,17 @@ const ReposList = () => {
 const Background = styled.div`
   .search-container {
     text-align: center;
-    margin-bottom: 1rem;
+    margin: 1.5rem 0 2.5rem 0;
+    padding: 6rem;
+    background-color: #ebf0ff;
+    border-radius: 10px;
 
     label {
       margin-right: 0.5rem;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
     }
   }
 
@@ -141,10 +162,35 @@ const Background = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0.8rem;
+    padding-bottom: 1.5rem;
   }
 
   h2 {
     margin-bottom: 0.5rem;
+  }
+
+  .filters {
+    display: flex;
+    align-items: center;
+  }
+
+  .local-search {
+    font-size: 1rem;
+    margin: 0 1rem 1rem 0;
+    padding: 0.5rem;
+
+    border: none;
+    border-bottom: 2px solid black;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .search-container {
+      padding: 3rem;
+    }
+
+    .filters {
+      justify-content: center;
+    }
   }
 
   /* Small screen devices (600px and above) */

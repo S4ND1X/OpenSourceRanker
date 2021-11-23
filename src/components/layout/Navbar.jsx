@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navbar = () => {
   return (
     <Background>
-      <a href="./">
+      <Link to="/">
         <h2>Open Source Ranker</h2>
-      </a>
+      </Link>
     </Background>
   );
 };
