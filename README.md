@@ -23,9 +23,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -42,7 +39,7 @@
     <a href="https://github.com/S4ND1X/OpenSourceRanker"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/S4ND1X/OpenSourceRanker">View Demo</a>
+    <a href="https://opensourceranker.netlify.app/">View Demo</a>
     ·
     <a href="https://github.com/S4ND1X/OpenSourceRanker/issues">Report Bug</a>
     ·
@@ -69,12 +66,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -83,24 +77,24 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+* Shows open source repositories with a rating from A to Z (best to worst) based on how easy it is to contribute.
+* Gives detailed information about repositories such as number of open issues, forks, stars, author, etc. 
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+[![Main][product-screenshot]](https://opensourceranker.netlify.app/)
+
+[![Repo Info][product-screenshot2]](https://opensourceranker.netlify.app/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
 ### Built With
 
-* [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [Chart.js](https://chartjs.org/)
+* [React Toastify](https://www.npmjs.com/package/react-toastify)
+* [Octokit.js](https://octokit.github.io/rest.js/v18)
+* [IsGithubUrl](https://github.com/alferov/is-github-url)
+* [Styled Components](https://styled-components.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -108,61 +102,38 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+To start you need to do the following installations
+* Node JS
+  ```sh
+  sudo apt install nodejs
+  ```
+
 * npm
   ```sh
   npm install npm@latest -g
   ```
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/S4ND1X/OpenSourceRanker.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+3. Enter your Github Developer Token in a new `.env` file
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   REACT_APP_GITHUB_API_KEY= 'ENTER YOUR TOKEN';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
-
-See the [open issues](https://github.com/S4ND1X/OpenSourceRanker/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -183,19 +154,15 @@ Don't forget to give the project a star! Thanks again!
 
 
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Jorge Sanchez- [@S4ND1X](https://github.com/S4ND1X) 
+
+Sebastián Crossa - [@sebastiancrossa](https://github.com/sebastiancrossa)
+
+Marlene Harms - [@marleneharms](https://github.com/marleneharms)
+
 
 Project Link: [https://github.com/S4ND1X/OpenSourceRanker](https://github.com/S4ND1X/OpenSourceRanker)
 
@@ -203,29 +170,17 @@ Project Link: [https://github.com/S4ND1X/OpenSourceRanker](https://github.com/S4
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/S4ND1X/OpenSourceRanker.svg?style=for-the-badge
 [contributors-url]: https://github.com/S4ND1X/OpenSourceRanker/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/S4ND1X/OpenSourceRanker.svg?style=for-the-badge
 [forks-url]: https://github.com/S4ND1X/OpenSourceRanker/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/S4ND1X/OpenSourceRanker.svg?style=for-the-badge
 [stars-url]: https://github.com/S4ND1X/OpenSourceRanker/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/S4ND1X/OpenSourceRanker.svg?style=for-the-badge
 [issues-url]: https://github.com/S4ND1X/OpenSourceRanker/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/S4ND1X/OpenSourceRanker.svg?style=for-the-badge
 [license-url]: https://github.com/S4ND1X/OpenSourceRanker/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/main.png
+[product-screenshot2]: images/repoinfo.png
